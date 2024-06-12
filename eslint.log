@@ -1,0 +1,67 @@
+
+/home/runner/work/exp-ode-power-series-expansion-dei/exp-ode-power-series-expansion-dei/experiment/simulation/taylor1.js
+   15:6   warning  'c5' is defined but never used  no-unused-vars
+   16:6   warning  'c6' is defined but never used  no-unused-vars
+   17:6   warning  'c7' is defined but never used  no-unused-vars
+   18:6   warning  'c8' is defined but never used  no-unused-vars
+   19:6   warning  'c9' is defined but never used  no-unused-vars
+   55:8   warning  'i' is not defined              no-undef
+   55:12  warning  'i' is not defined              no-undef
+   55:22  warning  'i' is not defined              no-undef
+   58:10  warning  'i' is not defined              no-undef
+   60:10  warning  'math' is not defined           no-undef
+   62:7   warning  'p' is not defined              no-undef
+   75:15  warning  'math' is not defined           no-undef
+   75:36  warning  'math' is not defined           no-undef
+   80:3   warning  'p' is not defined              no-undef
+   86:19  warning  'p' is not defined              no-undef
+   88:14  warning  'i' is not defined              no-undef
+   91:13  warning  'math' is not defined           no-undef
+  105:68  warning  'math' is not defined           no-undef
+  107:26  warning  'math' is not defined           no-undef
+  107:48  warning  'math' is not defined           no-undef
+  109:12  warning  'math' is not defined           no-undef
+  109:83  warning  'math' is not defined           no-undef
+  122:14  warning  'i' is not defined              no-undef
+  124:13  warning  'math' is not defined           no-undef
+  138:77  warning  'math' is not defined           no-undef
+  139:66  warning  'math' is not defined           no-undef
+  141:22  warning  'math' is not defined           no-undef
+  141:44  warning  'math' is not defined           no-undef
+  143:22  warning  'math' is not defined           no-undef
+  143:93  warning  'math' is not defined           no-undef
+  144:11  warning  'math' is not defined           no-undef
+  144:82  warning  'math' is not defined           no-undef
+  153:14  warning  'i' is not defined              no-undef
+  155:13  warning  'math' is not defined           no-undef
+  169:77  warning  'math' is not defined           no-undef
+  170:66  warning  'math' is not defined           no-undef
+  171:66  warning  'math' is not defined           no-undef
+  174:22  warning  'math' is not defined           no-undef
+  174:44  warning  'math' is not defined           no-undef
+  176:22  warning  'math' is not defined           no-undef
+  176:93  warning  'math' is not defined           no-undef
+  177:11  warning  'math' is not defined           no-undef
+  177:82  warning  'math' is not defined           no-undef
+  178:11  warning  'math' is not defined           no-undef
+  178:82  warning  'math' is not defined           no-undef
+  185:14  warning  'i' is not defined              no-undef
+  187:13  warning  'math' is not defined           no-undef
+  198:30  warning  'math' is not defined           no-undef
+  200:77  warning  'math' is not defined           no-undef
+  201:66  warning  'math' is not defined           no-undef
+  202:66  warning  'math' is not defined           no-undef
+  203:66  warning  'math' is not defined           no-undef
+  208:22  warning  'math' is not defined           no-undef
+  208:46  warning  'math' is not defined           no-undef
+  210:22  warning  'math' is not defined           no-undef
+  210:93  warning  'math' is not defined           no-undef
+  211:11  warning  'math' is not defined           no-undef
+  211:82  warning  'math' is not defined           no-undef
+  212:11  warning  'math' is not defined           no-undef
+  212:82  warning  'math' is not defined           no-undef
+  213:11  warning  'math' is not defined           no-undef
+  213:82  warning  'math' is not defined           no-undef
+
+✖ 62 problems (0 errors, 62 warnings)
+
