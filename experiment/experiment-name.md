@@ -1,1 +1,1 @@
-## Experiment name
+Ordinary Differential Equations (ODEs) using power series expansion methods such as Taylor’s series.
