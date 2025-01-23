@@ -1,0 +1,27 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Power series solution represents function as:",
+      "answers": {
+        "a": " Constant value",
+        "b": "Infinite polynomial series",
+        "c": "Trigonometric function",
+        "d": "Exponential curve"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Primary advantage of power series method: ",
+      "answers": {
+        "a": "Computational efficiency",
+        "b": "Analytical solution approximation",
+        "c": "Error minimization",
+        "d": "Simplified calculation"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
+  ]
+}

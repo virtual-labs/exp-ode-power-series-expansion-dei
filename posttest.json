@@ -1,0 +1,27 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Power series method generates solution through:",
+      "answers": {
+        "a": "Direct integration",
+        "b": "Recursive coefficient calculation",
+        "c": "Numerical differentiation",
+        "d": "Graphical interpolation"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Series expansion terms primarily affect:",
+      "answers": {
+        "a": "Computational speed",
+        "b": "Solution approximation accuracy",
+        "c": "Initial condition",
+        "d": "Equation complexity"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
+  ]
+}
