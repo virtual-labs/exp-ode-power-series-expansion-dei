@@ -9,8 +9,7 @@
         "c": "Numerical differentiation",
         "d": "Graphical interpolation"
       },
-      "correctAnswer": "b",
-      "difficulty": "beginner"
+      "correctAnswer": "b"
     },
     {
       "question": "Series expansion terms primarily affect:",
@@ -20,8 +19,87 @@
         "c": "Initial condition",
         "d": "Equation complexity"
       },
-      "correctAnswer": "b",
-      "difficulty": "beginner"
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Power series solutions are typically expanded around:",
+      "answers": {
+        "a": "Infinity",
+        "b": "A chosen initial point",
+        "c": "Random points",
+        "d": "Only zero always"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Which method uses Taylor-like expansion to solve ODEs?",
+      "answers": {
+        "a": "Power Series Method",
+        "b": "Bisection Method",
+        "c": "Gaussian Elimination",
+        "d": "Laplace Transform Method"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "The unknown solution y(x) is expressed as:",
+      "answers": {
+        "a": "A sum of polynomial terms",
+        "b": "A product of matrices",
+        "c": "A trigonometric function only",
+        "d": "A constant value"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "More terms in the series generally lead to:",
+      "answers": {
+        "a": "Higher accuracy",
+        "b": "Lower accuracy",
+        "c": "No change in results",
+        "d": "Automatic analytical solution"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Power series methods are useful when:",
+      "answers": {
+        "a": "Analytical solutions are complex or unavailable",
+        "b": "Equation has no variables",
+        "c": "Only definite integrals are needed",
+        "d": "Graph cannot be drawn"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Initial conditions are used to:",
+      "answers": {
+        "a": "Determine unknown coefficients",
+        "b": "Change graph colors",
+        "c": "Remove equation terms",
+        "d": "Enlarge step size"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Power series method is mainly applied for:",
+      "answers": {
+        "a": "Solving first-order ODEs locally",
+        "b": "Finding global roots of polynomials",
+        "c": "Reducing matrix dimensions",
+        "d": "Minimizing datasets"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "The graphical output helps to:",
+      "answers": {
+        "a": "Visualize the approximate ODE solution",
+        "b": "Hide all computed values",
+        "c": "Delete data points",
+        "d": "Randomize coefficients"
+      },
+      "correctAnswer": "a"
     }
   ]
 }
