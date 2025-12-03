@@ -2,26 +2,104 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "Power series solution represents function as:",
+      "question": "Power series solution represents a function as:",
       "answers": {
-        "a": " Constant value",
-        "b": "Infinite polynomial series",
-        "c": "Trigonometric function",
-        "d": "Exponential curve"
+        "a": "A constant value",
+        "b": "An infinite polynomial series",
+        "c": "A trigonometric function",
+        "d": "A random curve"
       },
-      "correctAnswer": "b",
-      "difficulty": "beginner"
+      "correctAnswer": "b"
     },
     {
-      "question": "Primary advantage of power series method: ",
+      "question": "Primary advantage of the power series method:",
       "answers": {
         "a": "Computational efficiency",
         "b": "Analytical solution approximation",
-        "c": "Error minimization",
-        "d": "Simplified calculation"
+        "c": "Reduces step size automatically",
+        "d": "Only works for linear functions"
       },
-      "correctAnswer": "b",
-      "difficulty": "beginner"
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Power series expansions are often based on:",
+      "answers": {
+        "a": "Midpoint averaging",
+        "b": "Taylor series ideas",
+        "c": "Matrix multiplication",
+        "d": "Inverse Laplace transforms"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Initial conditions in power series solutions help determine:",
+      "answers": {
+        "a": "Graph axis labels",
+        "b": "Series coefficients",
+        "c": "Color of plot lines",
+        "d": "Number of intervals"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Power series solutions are most accurate near:",
+      "answers": {
+        "a": "Boundary points far from expansion",
+        "b": "The expansion point",
+        "c": "Only at t = 0",
+        "d": "At infinity"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Expanding a function in power series:",
+      "answers": {
+        "a": "Uses multiple derivatives conceptually",
+        "b": "Works only for straight lines",
+        "c": "Removes dependency on variables",
+        "d": "Always gives the exact solution"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "The power series method is often applied when:",
+      "answers": {
+        "a": "Exact solution is complicated",
+        "b": "Integral form is easily available",
+        "c": "No initial condition is given",
+        "d": "Polynomial degree is zero"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What is plotted in the simulator output?",
+      "answers": {
+        "a": "ODE solution curve",
+        "b": "Histogram of errors",
+        "c": "Velocity vs. time",
+        "d": "Only coefficients"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Increasing the number of terms in the power series generally:",
+      "answers": {
+        "a": "Improves accuracy",
+        "b": "Reduces accuracy",
+        "c": "Removes need for initial value",
+        "d": "Does not affect solution"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Power series method typically applies to:",
+      "answers": {
+        "a": "First-order ODEs",
+        "b": "Only matrix equations",
+        "c": "Statistical problems",
+        "d": "Only partial differential equations"
+      },
+      "correctAnswer": "a"
     }
   ]
 }
