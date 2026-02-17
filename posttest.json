@@ -1,0 +1,105 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Power series method generates solution through:",
+      "answers": {
+        "a": "Direct integration",
+        "b": "Recursive coefficient calculation",
+        "c": "Numerical differentiation",
+        "d": "Graphical interpolation"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "In Taylor series method for ODEs, the term y(x+h) is computed using:",
+      "answers": {
+        "a": "Only first derivative",
+        "b": "Higher-order derivatives evaluated at x",
+        "c": "Matrix factorization",
+        "d": "Integral transforms"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "The truncation error in Taylor series method decreases when:",
+      "answers": {
+        "a": "Fewer terms are used",
+        "b": "Step size increases",
+        "c": "More higher-order terms are included",
+        "d": "Initial condition is ignored"
+      },
+      "correctAnswer": "c"
+    },
+    {
+      "question": "Power series solutions are typically expanded around:",
+      "answers": {
+        "a": "Infinity",
+        "b": "A chosen expansion point",
+        "c": "Random points",
+        "d": "Only zero always"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "If only the first derivative term is retained in Taylor expansion, the method becomes equivalent to:",
+      "answers": {
+        "a": "Runge-Kutta Method",
+        "b": "Euler’s Method",
+        "c": "Laplace Method",
+        "d": "Gaussian Elimination"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "The radius of convergence of a power series solution depends on:",
+      "answers": {
+        "a": "Singular points of the differential equation",
+        "b": "Graph plotting scale",
+        "c": "Step size only",
+        "d": "Number of data points"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "The main advantage of Taylor series method over Euler’s method is:",
+      "answers": {
+        "a": "Uses higher-order derivative information",
+        "b": "Requires no initial value",
+        "c": "Always gives exact solution",
+        "d": "Works only for linear equations"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "For nonlinear ODEs, Taylor series method:",
+      "answers": {
+        "a": "Cannot be applied",
+        "b": "Requires computation of repeated derivatives",
+        "c": "Removes need for initial condition",
+        "d": "Reduces equation order"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Increasing the number of series terms generally:",
+      "answers": {
+        "a": "Improves local accuracy",
+        "b": "Decreases convergence",
+        "c": "Eliminates truncation error completely",
+        "d": "Makes solution independent of step size"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "The graphical output in the simulator is useful to:",
+      "answers": {
+        "a": "Compare approximate and exact solutions visually",
+        "b": "Delete computed values",
+        "c": "Hide truncation error",
+        "d": "Randomize coefficients"
+      },
+      "correctAnswer": "a"
+    }
+  ]
+}
