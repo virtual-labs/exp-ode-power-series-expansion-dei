@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODE Solver Experiment</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .experiment-title {
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 1300px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 400px);
+            gap: 30px;
+            justify-content: center;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        .box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .box-title {
+            background-color: #34495e;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            margin: 0;
+        }
+        .box-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .examples {
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .examples h3 { margin-top: 0; color: #2c3e50; }
+        .examples p { margin: 0; line-height: 1.6; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #2c3e50; }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        .button-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            margin-top: auto;
+            border-top: 1px solid #ddd;
+        }
+        button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover { background-color: #2980b9; }
+        .results { margin-bottom: 20px; }
+        .graph-container {
+            flex: 1;
+            min-height: 300px;
+            position: relative;
+            margin-top: 20px;
+        }
+        .error {
+            color: #e74c3c;
+            background-color: #fadbd8;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .obs-table-wrapper {
+            flex: 1;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .obs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+        }
+        .obs-table th {
+            background-color: #34495e;
+            color: white;
+            padding: 8px 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        .obs-table td {
+            padding: 6px 10px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        .obs-table tr:nth-child(even) td { background-color: #f8f9fa; }
+        .obs-table tr:hover td { background-color: #eaf4fb; }
+        .obs-note { font-size: 0.8em; color: #666; margin-top: 10px; font-style: italic; }
+        .obs-info { font-size: 0.85em; color: #2c3e50; margin-bottom: 10px; }
+        @media (max-width: 1300px) {
+            .grid-container { grid-template-columns: repeat(2, 1fr); width: 90%; max-width: 900px; }
+        }
+        @media (max-width: 700px) {
+            .grid-container { grid-template-columns: 1fr; width: 90%; max-width: 500px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="experiment-title">
+        <h2>Solving Ordinary Differential Equations Using Power Series Method</h2>
+    </div>
+
+    <div class="grid-container">
+
+        <!-- Box 1: Input Parameters -->
+        <div class="box">
+            <div class="box-title">Input Parameters</div>
+            <div class="box-content">
+                <div class="examples">
+                    <h3>Example Equations:</h3>
+                    <p>
+                        &bull; y' = x^2 + y<br>
+                        &bull; y' = x*y<br>
+                        &bull; y' = sin(x) + y^2<br>
+                        &bull; y' = exp(x) - y<br>
+                        &bull; y' = -x*y + x^2
+                    </p>
+                </div>
+                <div class="input-group">
+                    <label for="ode">Enter ODE (use y' for first derivative):</label>
+                    <input type="text" id="ode" placeholder="Example: y' = x^2 + y" value="y' = x^2 + y">
+                </div>
+                <div class="input-group">
+                    <label for="initialX">Initial x value:</label>
+                    <input type="number" id="initialX" value="0" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="initialY">Initial y value:</label>
+                    <input type="number" id="initialY" value="1" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="terms">Number of terms in series:</label>
+                    <input type="number" id="terms" value="10" min="1" max="20">
+                </div>
+                <div class="input-group">
+                    <label for="xRange">X-axis range:</label>
+                    <input type="number" id="xRange" value="2" min="0.1" step="0.1">
+                </div>
+            </div>
+            <div class="button-container">
+                <button onclick="solve()"><b>Simulate</b></button>
+                <button onclick="loadExample()"><b>Simulate Example</b></button>
+            </div>
+        </div>
+
+        <!-- Box 2: Solution and Visualization -->
+        <div class="box">
+            <div class="box-title">Solution and Visualization</div>
+            <div class="box-content">
+                <div class="results" id="results"></div>
+                <div class="graph-container">
+                    <canvas id="solutionGraph"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Box 3: Observation Table -->
+        <div class="box">
+            <div class="box-title">Observation Table</div>
+            <div class="box-content">
+                <div class="obs-info" id="obsInfo">Run simulation to populate the table.</div>
+                <div class="obs-table-wrapper">
+                    <table class="obs-table">
+                        <thead>
+                            <tr>
+                                <th>S. No.</th>
+                                <th>x</th>
+                                <th>y(x)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="obsTableBody">
+                            <tr>
+                                <td colspan="3" style="color:#999; padding:20px; text-align:center;">No data yet</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+        </div>
+
+    </div>
+
+    <script>
+        let chart = null;
+
+        const examples = [
+            "y' = x^2 + y",
+            "y' = x*y",
+            "y' = sin(x) + y^2",
+            "y' = exp(x) - y",
+            "y' = -x*y + x^2"
+        ];
+
+        function loadExample() {
+            const randomExample = examples[Math.floor(Math.random() * examples.length)];
+            document.getElementById('ode').value = randomExample;
+            solve();
+        }
+
+        function solve() {
+            try {
+                const ode = document.getElementById('ode').value;
+                const x0 = parseFloat(document.getElementById('initialX').value);
+                const y0 = parseFloat(document.getElementById('initialY').value);
+                const terms = parseInt(document.getElementById('terms').value);
+                const xRange = parseFloat(document.getElementById('xRange').value);
+
+                const coefficients = calculateTaylorSeries(ode, x0, y0, terms);
+                const points = generatePoints(coefficients, x0, xRange);
+
+                displayResults(coefficients, points);
+                plotSolution(points);
+                populateObsTable(points);
+
+            } catch (error) {
+                document.getElementById('results').innerHTML =
+                    '<div class="error">Error: ' + error.message + '</div>';
+            }
+        }
+
+        function parseODE(ode) {
+            const parts = ode.replace(/\s+/g, '').split('=');
+            if (parts.length !== 2) throw new Error("Invalid ODE format");
+            if (parts[0] !== "y'" && parts[0] !== "dy/dx") {
+                throw new Error("Left side must be y' or dy/dx");
+            }
+            return parts[1];
+        }
+
+        function evaluateRHS(expr, x, y) {
+            const scope = { x: x, y: y };
+            try {
+                return math.evaluate(expr, scope);
+            } catch (error) {
+                throw new Error("Invalid expression: " + error.message);
+            }
+        }
+
+        function calculateTaylorSeries(ode, x0, y0, terms) {
+            const rhs = parseODE(ode);
+            const coefficients = [y0];
+            let derivatives = [y0];
+
+            for (let n = 1; n < terms; n++) {
+                let expr = rhs;
+                expr = expr.replace(/y/g, '(' + derivatives.map(function(c, i) {
+                    return c + (i > 0 ? '*' + i + '!' : '');
+                }).join('+') + ')/' + math.factorial(n - 1));
+
+                const nthDerivative = evaluateRHS(expr, x0, derivatives[n - 1]);
+                derivatives.push(nthDerivative);
+                coefficients.push(nthDerivative / math.factorial(n));
+            }
+
+            return coefficients;
+        }
+
+        function generatePoints(coefficients, x0, xRange) {
+            const points = [];
+            const steps = 200;
+            const dx = (2 * xRange) / steps;
+
+            for (let i = 0; i <= steps; i++) {
+                const x = x0 - xRange + i * dx;
+                let y = 0;
+                for (let n = 0; n < coefficients.length; n++) {
+                    y += coefficients[n] * Math.pow(x - x0, n);
+                }
+                points.push({ x: x, y: y });
+            }
+
+            return points;
+        }
+
+        function displayResults(coefficients, points) {
+            let html = '<h3>Power Series Solution:</h3>';
+            html += '<p style="overflow-x: auto;">y(x) = ';
+
+            for (let i = 0; i < coefficients.length; i++) {
+                if (i > 0 && coefficients[i] >= 0) html += ' + ';
+                html += coefficients[i].toFixed(4);
+                if (i > 0) html += '(x-x\u2080)^' + i;
+            }
+            html += '</p>';
+
+            document.getElementById('results').innerHTML = html;
+        }
+
+        function plotSolution(points) {
+            const ctx = document.getElementById('solutionGraph').getContext('2d');
+
+            if (chart) {
+                chart.destroy();
+            }
+
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'ODE Solution',
+                        data: points,
+                        borderColor: 'rgb(52, 152, 219)',
+                        tension: 0.1,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            title: { display: true, text: 'x' }
+                        },
+                        y: {
+                            title: { display: true, text: 'y' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function populateObsTable(points) {
+            var sampleCount = 20;
+            var step = Math.max(1, Math.floor(points.length / sampleCount));
+            var sampled = [];
+
+            for (var i = 0; i < points.length; i += step) {
+                sampled.push(points[i]);
+            }
+
+            var last = points[points.length - 1];
+            if (sampled[sampled.length - 1] !== last) {
+                sampled.push(last);
+            }
+
+            var tbody = document.getElementById('obsTableBody');
+            tbody.innerHTML = '';
+
+            sampled.forEach(function(pt, idx) {
+                var tr = document.createElement('tr');
+                var yVal = isFinite(pt.y) ? pt.y.toFixed(6) : 'N/A';
+                tr.innerHTML = '<td>' + (idx + 1) + '</td><td>' + pt.x.toFixed(4) + '</td><td>' + yVal + '</td>';
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('obsInfo').innerHTML =
+                '<b>Total points:</b> ' + points.length + ' &nbsp;|&nbsp; <b>Shown:</b> ' + sampled.length + ' (sampled)';
+        }
+
+        solve();
+    </script>
+<script src="../assets/js/iframeResize.js"></script>
+        
+        </body>
+</html>
